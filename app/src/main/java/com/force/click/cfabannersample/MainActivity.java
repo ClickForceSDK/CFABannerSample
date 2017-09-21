@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         ad = (AdView) this.findViewById(R.id.ad);
         int weg = (int) ((this.getResources().getDisplayMetrics().widthPixels) * 0.6);
         int hig = (int) (weg * 0.15625);
-        ad.getAd(5053, weg, hig,320,50);
+        ad.getAd(3783, weg, hig,320,50);
 
 
         //Ad Load Callback
