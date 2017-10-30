@@ -17,27 +17,23 @@ public class MainActivity extends AppCompatActivity {
 
 
         ad = (AdView) this.findViewById(R.id.ad);
-        int weg = (int) ((this.getResources().getDisplayMetrics().widthPixels) * 0.6);
-        int hig = (int) (weg * 0.15625);
-        ad.getAd(3783, weg, hig,320,50);
+        ad.getAd(3783,320,50);
 
 
         //Ad Load Callback
         ad.setOnAdViewLoaded(new AdViewLinstener() {
             @Override
-            public void setOnAdViewLoadFailResult() {
+            public void OnAdViewLoadFail() {
                 Log.d("Ad Response Result", "請求廣告失敗");
             }
 
             @Override
-            public void setOnAdViewLoadSuccessResult() {
+            public void OnAdViewLoadSuccess() {
 
                 Log.d("Ad Response Result", "成功請求廣告");
-            }
 
-            @Override
-            public void getFBNativeID(String s) {
-
+                //顯示banner廣告
+                ad.show();
             }
         });
 
