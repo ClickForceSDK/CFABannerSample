@@ -17,7 +17,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         ad = (AdView) this.findViewById(R.id.ad);
-        ad.getAd(3783,320,50);
+        ad.getAd(3783,320,50,30);
+        ad.outputDebugInfo = true;
 
 
         //Ad Load Callback
