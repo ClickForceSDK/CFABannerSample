@@ -1,11 +1,19 @@
 package com.force.click.cfabannersample;
 
+import android.os.AsyncTask;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.clickforce.ad.AdSize;
 import com.clickforce.ad.AdView;
-import com.clickforce.ad.Listener.AdViewLinstener;
+import com.clickforce.ad.Listener.AdViewListener;
+import com.google.android.gms.ads.identifier.AdvertisingIdClient;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,28 +25,31 @@ public class MainActivity extends AppCompatActivity {
 
 
         ad = (AdView) this.findViewById(R.id.ad);
-        ad.getAd(3783,320,50,1,30);
+        ad.getAd(3903, AdSize.MA320X100,30);
         ad.outputDebugInfo = true;
-
-
         //Ad Load Callback
-        ad.setOnAdViewLoaded(new AdViewLinstener() {
+        ad.setOnAdViewLoaded(new AdViewListener() {
+            @Override
+            public void OnAdViewLoadSuccess() {
+                Log.d("Ad Response Result", "成功請求廣告");
+
+                //顯示banner廣告
+                ad.show();
+            }
+
             @Override
             public void OnAdViewLoadFail() {
                 Log.d("Ad Response Result", "請求廣告失敗");
             }
 
             @Override
-            public void OnAdViewLoadSuccess() {
+            public void OnAdViewClickToAd() {
 
-                Log.d("Ad Response Result", "成功請求廣告");
-
-                //顯示banner廣告
-                ad.show();
             }
         });
-
     }
+
+
 
     @Override
     protected void onDestroy() {
