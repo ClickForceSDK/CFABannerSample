@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         ad = (AdView) this.findViewById(R.id.ad);
-        ad.getAd(3783, AdSize.MA320X50,true);
+        ad.getAd(8326, AdSize.MA320X50,true);
         ad.outputDebugInfo = true;
         //Ad Load Callback
         ad.setOnAdViewLoaded(new AdViewListener() {
